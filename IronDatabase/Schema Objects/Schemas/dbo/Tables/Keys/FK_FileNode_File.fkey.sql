@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[FileNode]
+    ADD CONSTRAINT [FK_FileNode_File] FOREIGN KEY ([FileId]) REFERENCES [dbo].[File] ([Id]) ON DELETE CASCADE ON UPDATE CASCADE;
+

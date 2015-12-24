@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 9.125" name="IronDatabase">
+  <DataContextMoniker Name="/IronDatabaseDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f1b37fe4-e485-4146-a135-ee609cd8864f" absoluteBounds="0.75, 4.75, 2, 1.5891951497395827">
+      <DataClassMoniker Name="/IronDatabaseDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9e5e2ff7-6656-4c8c-891d-bf58a3f7b4d3" absoluteBounds="0.765, 5.21, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="06a9e5cc-f0de-42b7-bcbb-4b177fff19f7" absoluteBounds="3.5, 3.125, 2, 1.9178898111979166">
+      <DataClassMoniker Name="/IronDatabaseDataContext/Directory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f6bf684c-c108-4956-8369-7e094d4c7a32" absoluteBounds="3.515, 3.585, 1.9700000000000002, 1.3578898111979165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f8ce463f-ed55-4786-a1b4-3bb8223a05c0" absoluteBounds="6.25, 3.375, 2, 1.4248478190104166">
+      <DataClassMoniker Name="/IronDatabaseDataContext/File" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7dce8eba-9441-4c82-9b35-5aa82d71ad84" absoluteBounds="6.265, 3.835, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="af09646b-7ead-44ca-8b6a-a83d16a6d96c" absoluteBounds="9, 2.25, 2, 1.2605004882812505">
+      <DataClassMoniker Name="/IronDatabaseDataContext/FileAction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="83e1dd20-8238-41f2-975c-ab711d35f1fc" absoluteBounds="9.015, 2.71, 1.9700000000000002, 0.70050048828125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0600fbd9-2bf5-43fb-bb78-b93462d8df7b" absoluteBounds="12, 5.5, 2, 1.2605004882812505">
+      <DataClassMoniker Name="/IronDatabaseDataContext/FileNode" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2b696831-ac24-4db4-a375-5f90cfb26de7" absoluteBounds="12.015, 5.96, 1.9700000000000002, 0.70050048828125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7f8c568b-f1b0-4e22-abde-2763af24845f" absoluteBounds="9, 6.25, 2, 1.5891951497395827">
+      <DataClassMoniker Name="/IronDatabaseDataContext/FileVersion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9db50bdf-bd30-434f-8d59-41635944b16f" absoluteBounds="9.015, 6.71, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2f42c0d2-8c6a-47bd-a88b-bb949f275c1a" absoluteBounds="3.5, 6.625, 2, 2.2465844726562496">
+      <DataClassMoniker Name="/IronDatabaseDataContext/Node" />
+      <nestedChildShapes>
+        <elementListCompartment Id="927bbac4-e453-499d-ae10-9c007b24bf60" absoluteBounds="3.515, 7.085, 1.9700000000000002, 1.68658447265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a928defb-b4a1-49fb-a9a2-2a0e06479fc3" absoluteBounds="6.25, 7, 2, 1.4248478190104166">
+      <DataClassMoniker Name="/IronDatabaseDataContext/NodeAvailability" />
+      <nestedChildShapes>
+        <elementListCompartment Id="76768024-34b0-4f43-a327-44f73776acf3" absoluteBounds="6.265, 7.46, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.2079043738732 : 5.04288981119792); (4.2079043738732 : 5.29288981119792); (4.80600494165665 : 5.29288981119792); (4.80600494165665 : 5.04288981119792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IronDatabaseDataContext/Directory/Directory_Directory" />
+      <nodes>
+        <classShapeMoniker Id="06a9e5cc-f0de-42b7-bcbb-4b177fff19f7" />
+        <classShapeMoniker Id="06a9e5cc-f0de-42b7-bcbb-4b177fff19f7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.81604248046875); (3.8226996869366 : 5.81604248046875); (3.8226996869366 : 5.04288981119792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IronDatabaseDataContext/User/User_Directory" />
+      <nodes>
+        <classShapeMoniker Id="f1b37fe4-e485-4146-a135-ee609cd8864f" />
+        <classShapeMoniker Id="06a9e5cc-f0de-42b7-bcbb-4b177fff19f7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.08742390950521); (6.25 : 4.08742390950521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IronDatabaseDataContext/Directory/Directory_File" />
+      <nodes>
+        <classShapeMoniker Id="06a9e5cc-f0de-42b7-bcbb-4b177fff19f7" />
+        <classShapeMoniker Id="f8ce463f-ed55-4786-a1b4-3bb8223a05c0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 4.15517465364583); (10 : 4.15517465364583); (10 : 3.51050048828125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IronDatabaseDataContext/File/File_FileAction" />
+      <nodes>
+        <classShapeMoniker Id="f8ce463f-ed55-4786-a1b4-3bb8223a05c0" />
+        <classShapeMoniker Id="af09646b-7ead-44ca-8b6a-a83d16a6d96c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 4.50876373632812); (13 : 4.50876373632812); (13 : 5.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IronDatabaseDataContext/File/File_FileNode" />
+      <nodes>
+        <classShapeMoniker Id="f8ce463f-ed55-4786-a1b4-3bb8223a05c0" />
+        <classShapeMoniker Id="0600fbd9-2bf5-43fb-bb78-b93462d8df7b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 4.79984781901042); (8.625 : 5.17484781901042); (8.625 : 7.04459757486979); (9 : 7.04459757486979)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IronDatabaseDataContext/File/File_FileVersion" />
+      <nodes>
+        <classShapeMoniker Id="f8ce463f-ed55-4786-a1b4-3bb8223a05c0" />
+        <classShapeMoniker Id="7f8c568b-f1b0-4e22-abde-2763af24845f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 8.67946614583333); (13 : 8.67946614583333); (13 : 6.76050048828125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IronDatabaseDataContext/Node/Node_FileNode" />
+      <nodes>
+        <classShapeMoniker Id="2f42c0d2-8c6a-47bd-a88b-bb949f275c1a" />
+        <classShapeMoniker Id="0600fbd9-2bf5-43fb-bb78-b93462d8df7b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 6.33919514973958); (1.75 : 7.74829223632812); (3.5 : 7.74829223632812)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IronDatabaseDataContext/User/User_Node" />
+      <nodes>
+        <classShapeMoniker Id="f1b37fe4-e485-4146-a135-ee609cd8864f" />
+        <classShapeMoniker Id="2f42c0d2-8c6a-47bd-a88b-bb949f275c1a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 7.71242390950521); (6.25 : 7.71242390950521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IronDatabaseDataContext/Node/Node_NodeAvailability" />
+      <nodes>
+        <classShapeMoniker Id="2f42c0d2-8c6a-47bd-a88b-bb949f275c1a" />
+        <classShapeMoniker Id="a928defb-b4a1-49fb-a9a2-2a0e06479fc3" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

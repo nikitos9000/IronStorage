@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[Node]
+    ADD CONSTRAINT [FK_Node_User] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([Id]) ON DELETE CASCADE ON UPDATE CASCADE;
+

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IronDatabase" Class="IronDatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=IronDatabase;Integrated Security=True;Pooling=False" SettingsObjectName="IronLord.Properties.Settings" SettingsPropertyName="IronDatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EMailAddress" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordHash" Type="System.Data.Linq.Binary" DbType="Binary(16) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Quota" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="QuotaUsed" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="User_Directory" Member="Directories" ThisKey="Id" OtherKey="UserId" Type="Directory" />
+      <Association Name="User_Node" Member="Nodes" ThisKey="Id" OtherKey="UserId" Type="Node" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Directory" Member="Directories">
+    <Type Name="Directory">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IsPublic" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsVersioned" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="EncryptionLevel" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="AvailabilityLevel" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="Directory_Directory" Member="Directories" ThisKey="Id" OtherKey="ParentId" Type="Directory" />
+      <Association Name="Directory_File" Member="Files" ThisKey="Id" OtherKey="DirectoryId" Type="File" />
+      <Association Name="Directory_Directory" Member="Directory1" ThisKey="ParentId" OtherKey="Id" Type="Directory" IsForeignKey="true" />
+      <Association Name="User_Directory" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[File]" Member="Files">
+    <Type Name="File">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DirectoryId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="File_FileAction" Member="FileActions" ThisKey="Id" OtherKey="FileId" Type="FileAction" />
+      <Association Name="File_FileNode" Member="FileNodes" ThisKey="Id" OtherKey="FileId" Type="FileNode" />
+      <Association Name="File_FileVersion" Member="FileVersions" ThisKey="Id" OtherKey="FileId" Type="FileVersion" />
+      <Association Name="Directory_File" Member="Directory" ThisKey="DirectoryId" OtherKey="Id" Type="Directory" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FileAction" Member="FileActions">
+    <Type Name="FileAction">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FileId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ActionType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="File_FileAction" Member="File" ThisKey="FileId" OtherKey="Id" Type="File" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FileNode" Member="FileNodes">
+    <Type Name="FileNode">
+      <Column Name="FileId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="NodeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="File_FileNode" Member="File" ThisKey="FileId" OtherKey="Id" Type="File" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Node_FileNode" Member="Node" ThisKey="NodeId" OtherKey="Id" Type="Node" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FileVersion" Member="FileVersions">
+    <Type Name="FileVersion">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FileId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Fileize" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="DeltaSize" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="FileHash" Type="System.Data.Linq.Binary" DbType="Binary(16) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="File_FileVersion" Member="File" ThisKey="FileId" OtherKey="Id" Type="File" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Node" Member="Nodes">
+    <Type Name="Node">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IpAddress" Type="System.Data.Linq.Binary" DbType="Binary(6)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ProvidedQuota" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ProvidedQuotaUsed" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ActionNumber" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ActionKeyEncrypt" Type="System.Data.Linq.Binary" DbType="Binary(64) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ActionKeyDecrypt" Type="System.Data.Linq.Binary" DbType="Binary(64) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Node_FileNode" Member="FileNodes" ThisKey="Id" OtherKey="NodeId" Type="FileNode" />
+      <Association Name="Node_NodeAvailability" Member="NodeAvailabilities" ThisKey="Id" OtherKey="NodeId" Type="NodeAvailability" />
+      <Association Name="User_Node" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NodeAvailability" Member="NodeAvailabilities">
+    <Type Name="NodeAvailability">
+      <Column Name="NodeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAttempts" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SuccessAttempts" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LogDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Node_NodeAvailability" Member="Node" ThisKey="NodeId" OtherKey="Id" Type="Node" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>
